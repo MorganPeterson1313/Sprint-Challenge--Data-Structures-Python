@@ -31,17 +31,24 @@ class LinkedList:
     if not self.head:
       return False
     # get a reference to the node we're currently at; update this as we traverse the list
-    current = self.head
+  
     # check to see if we're at a valid node 
-    while current:
+    while self.head:
       # return True if the current value we're looking at matches our target value
-      if current.get_value() == value:
+      if self.head.get_value() == value:
         return True
       # update our current node to the current node's next node
-      current = current.get_next()
+      self.head = self.head.get_next()
     # if we've gotten here, then the target node isn't in our list
     return False
 
   def reverse_list(self):
-    # TO BE COMPLETED
-    pass
+    prev = None
+    current = self.head 
+    while(current is not None):
+      next = current.next_node
+      current.next = prev 
+      prev = current 
+      current = next
+    self.head = prev 
+    
